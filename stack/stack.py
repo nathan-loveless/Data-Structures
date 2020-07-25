@@ -15,15 +15,18 @@ from singly_linked_list import LinkedList
 class Stack:
     def __init__(self):
         self.size = 0
-        self.storage = LinkedList()
+        self.storage = list()
 
     def __len__(self):
-        return self.storage.get_length()
+        return self.size
 
     def push(self, value):
-        self.storage.add_to_tail(value)
+        self.storage.append(value)
+        self.size += 1
 
     def pop(self):
-        if self.storage.get_length() == 0:
-            return None
-        return self.storage.remove_tail()
+        if self.size is 0:
+            return 
+        else:
+            self.size -= 1
+            return self.storage.pop()

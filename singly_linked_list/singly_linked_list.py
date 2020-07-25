@@ -67,10 +67,6 @@ class LinkedList:
             currNode = currNode.get_next()
         
         return False
-
-    # def contains(self, value):
-    #     while(self.tail != None):
-    #         pass
     
     def remove_head(self):
         if self.head is None:
@@ -84,23 +80,42 @@ class LinkedList:
         else:
             value = self.head.get_value()
             self.head = self.head.get_next()       
-            self.length -= 1
             return value
 
     def remove_tail(self):
-        if(self.length == 0):
-            return None
-        elif(self.head == self.tail):
+        if self.head is None:
+            return
+        elif self.head == self.tail:
+            currValue = self.head.get_value()
             self.head = None
             self.tail = None
-            length -= 1
-        else:
-            currNode = self.head
-            prevNode = self.head
+            self.length -= 1
+            return currValue
+            
+        currNode = self.head
 
-            while currNode is not None:
-                prevNode = currNode
-                currNode = currNode.get_next()
+        while currNode.get_next() is not self.tail:
+            currNode = currNode.get_next()
 
-            self.tail = prevNode
-        return self.tail.get_value()
+        currValue = self.tail.get_value()
+        self.tail = None
+        self.length -= 1
+        self.tail = currNode
+        return currValue
+
+
+list = LinkedList()
+list.add_to_tail(100)
+print(f'size: {list.get_length()}')
+list.add_to_tail(101)
+print(f'size: {list.get_length()}')
+list.add_to_tail(105)
+print(f'size: {list.get_length()}')
+print(f'popping 105: {list.remove_tail()}')
+print(f'size: {list.get_length()}')
+print(f'popping 101: {list.remove_tail()}')
+print(f'size: {list.get_length()}')
+print(f'popping 100: {list.remove_tail()}')
+print(f'size: {list.get_length()}')
+print(f'popping nothing: {list.remove_tail()}')
+print(f'size: {list.get_length()}')
