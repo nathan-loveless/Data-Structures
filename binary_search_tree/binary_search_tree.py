@@ -17,15 +17,42 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
+        # Start at the root and loop until 'cur_node' is None
+            # if 'value' <= 'cur_node'
+                # if 'cur_node.left' is None
+                    #insert our value!
+                # else                
+                    # go left (update 'cur_node' to be 'cur_node.left')
+            # elif value > 'cur_node'
+                # if 'cur_node.right' is None
+                    # insert our value!
+                # else
+                    # go right (update 'cur_node' to be 'cur_node.right')
+        if value <= self.value:
+            if self.left is None:
+                self.left = BSTNode(value)
+            else:
+                self.left.insert(value)
+        elif value > self.value:
+            if self.right is None:
+                self.right = BSTNode(value)
+            else:
+                self.right.insert(value)
         pass
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
+         # compare target_value to cur_value
+            # 1. == we return True
+            # 2. < we go left
+            # 3 > we go right
+            # 4. if can't go left/right (not found) return False
         pass
 
     # Return the maximum value found in the tree
     def get_max(self):
+        # go right!
         pass
 
     # Call the function `fn` on the value of each node
@@ -63,7 +90,7 @@ class BSTNode:
 """
 This code is necessary for testing the `print` methods
 """
-bst = BinarySearchTree(1)
+bst = BSTNode(1)
 
 bst.insert(8)
 bst.insert(5)
